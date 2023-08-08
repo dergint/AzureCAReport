@@ -76,11 +76,11 @@ param (
     [Parameter(Mandatory = $False, Position = 2)] [ValidateSet('True', 'False')] $BetaProfile = 'true'
 )
 #Requires -Version 5.1
-#Requires -Modules @{ ModuleName="Microsoft.Graph.Authentication"; ModuleVersion="2.2.0" }
-#Requires -Modules @{ ModuleName="Microsoft.Graph.Identity.SignIns"; ModuleVersion="2.2.0" }
-#Requires -Modules @{ ModuleName="Microsoft.Graph.Applications"; ModuleVersion="2.2.0" }
-#Requires -Modules @{ ModuleName="Microsoft.Graph.Users"; ModuleVersion="2.2.0" }
-#Requires -Modules @{ ModuleName="Microsoft.Graph.Groups"; ModuleVersion="2.2.0" }
+#Requires -Modules @{ ModuleName="Microsoft.Graph.Authentication"; ModuleVersion="1.28.0" }
+#Requires -Modules @{ ModuleName="Microsoft.Graph.Identity.SignIns"; ModuleVersion="1.28.0" }
+#Requires -Modules @{ ModuleName="Microsoft.Graph.Applications"; ModuleVersion="1.28.0" }
+#Requires -Modules @{ ModuleName="Microsoft.Graph.Users"; ModuleVersion="1.28.0" }
+#Requires -Modules @{ ModuleName="Microsoft.Graph.Groups"; ModuleVersion="1.28.0" }
 Begin {
     Clear-Host
     Write-Host 'Importing the modules...'
@@ -106,17 +106,6 @@ Begin {
             Start-Sleep -Seconds 2
             Exit
         }
-    }
-
-    if ($BetaProfile -eq 'false') 
-    {
-        Write-Host 'Connecting to Default Profile' -ForegroundColor Green
-        Select-MgProfile -Name v1.0
-    }
-    else 
-    {
-        Write-Host 'Connecting to Beta Profile' -ForegroundColor Green
-        Select-MgProfile -Name beta
     }
     
     Write-Host 'Successfully Logged into Microsoft Graph' -ForegroundColor Green
